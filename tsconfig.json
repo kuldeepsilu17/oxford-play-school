@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": "./oxford-play-school",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "oxford-play-school/next-env.d.ts",
+    "oxford-play-school/**/*.ts",
+    "oxford-play-school/**/*.tsx",
+    "oxford-play-school/.next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "oxford-play-school/node_modules"]
+}

@@ -49,11 +49,10 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-2 lg:px-3 py-2 text-xs lg:text-sm transition duration-200 font-medium ${
-                    isActive(item.href)
+                  className={`px-2 lg:px-3 py-2 text-xs lg:text-sm transition duration-200 font-medium ${isActive(item.href)
                       ? "text-purple-600"
                       : "text-gray-700 hover:text-purple-600"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -114,11 +113,10 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`block px-4 py-2 rounded-xl transition font-medium text-sm ${
-                      isActive(item.href)
+                    className={`block px-4 py-2 rounded-xl transition font-medium text-sm ${isActive(item.href)
                         ? "bg-purple-50 text-purple-600"
                         : "text-gray-700 hover:bg-purple-50 hover:text-purple-600"
-                    }`}
+                      }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
