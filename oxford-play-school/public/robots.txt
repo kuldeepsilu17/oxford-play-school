@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of certain paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Allow crawling of static assets
+Allow: /_next/static/
+
+# Sitemap location
+Sitemap: https://oxfordplayschool.com/sitemap.xml
+
+# Crawl delay to be respectful to server
+Crawl-delay: 1
+
+# Google specific rules
+User-agent: Googlebot
+Allow: /

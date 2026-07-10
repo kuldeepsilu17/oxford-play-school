@@ -1,0 +1,11 @@
+{
+  "name": "oxford-school-root",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix oxford-play-school",
+    "dev": "npm run dev --prefix oxford-play-school",
+    "build": "npm run build --prefix oxford-play-school",
+    "start": "npm run start --prefix oxford-play-school",
+    "lint": "npm run lint --prefix oxford-play-school"
+  }
+}
