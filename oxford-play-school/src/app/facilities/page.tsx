@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 import FeatureCard from "@/components/FeatureCard";
 import { generateMetadata as generateSeoMetadata } from "@/lib/seo-config";
-import { BookOpen, Bus, Smile, Users, Shield, Utensils, TreesIcon as Trees, Music } from "lucide-react";
+import { GraduationCap, BookOpen, Bus, Laptop, Smile, Video, Droplet, Music, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "School Facilities | Oxford Play School - Best Infrastructure in Tibbi",
@@ -13,6 +13,54 @@ export const metadata: Metadata = generateSeoMetadata({
 });
 
 export default function FacilitiesPage() {
+  const facilities = [
+    {
+      icon: <GraduationCap size={24} />,
+      title: "B.Ed Teachers",
+      description: "Our classes are taught by highly qualified, background-verified B.Ed educators focused on building core values and conceptual clarity in children."
+    },
+    {
+      icon: <BookOpen size={24} />,
+      title: "Smart Classrooms",
+      description: "Equipped with interactive audio-visual learning boards, colorful wall decorations, and kids-friendly learning kits that make lessons fun."
+    },
+    {
+      icon: <Bus size={24} />,
+      title: "School Bus Facility",
+      description: "Comfortable and safe transport services covering all key villages near Tibbi and Hanumangarh, operated by experienced drivers."
+    },
+    {
+      icon: <Laptop size={24} />,
+      title: "Computer Learning",
+      description: "Introducing children to foundational digital concepts and interactive brain games to foster early logical thinking and computational interest."
+    },
+    {
+      icon: <Smile size={24} />,
+      title: "Play Area",
+      description: "Safe indoor and outdoor playgrounds with slides, building blocks, and games that encourage social engagement and physical development."
+    },
+    {
+      icon: <Video size={24} />,
+      title: "CCTV Security",
+      description: "Comprehensive 24/7 security guard patrol and live CCTV surveillance coverage inside classrooms and school gates for maximum safety."
+    },
+    {
+      icon: <Droplet size={24} />,
+      title: "Safe Drinking Water",
+      description: "Equipped with multi-stage RO water purification systems and chilled dispensers ensuring clean, safe, and hygienic water for everyone."
+    },
+    {
+      icon: <Music size={24} />,
+      title: "Cultural Activities",
+      description: "Regular art, dance, musical activities, and seasonal festivals celebrating heritage and building stage confidence in young kids."
+    },
+    {
+      icon: <Sparkles size={24} />,
+      title: "Clean Campus",
+      description: "Strict sanitation protocols with regular disinfection of toys, tables, washrooms, and classrooms to maintain a germ-free environment."
+    }
+  ];
+
   return (
     <>
       <Hero
@@ -23,44 +71,22 @@ export default function FacilitiesPage() {
 
       <AnimatedSection className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Complete Facility Overview</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={<BookOpen />}
-              title="Smart Classrooms"
-              description="Well-lit, spacious classrooms equipped with age-appropriate educational materials, interactive boards, and comfortable furniture for optimal learning."
-              delay={0}
-            />
-            <FeatureCard
-              icon={<Bus />}
-              title="Safe Transportation"
-              description="Comfortable school buses with GPS tracking, trained drivers, and attendants ensuring safe commute for all students."
-              delay={0.1}
-            />
-            <FeatureCard
-              icon={<Trees />}
-              title="Outdoor Play Area"
-              description="Spacious, well-maintained playground with age-appropriate equipment for physical development and outdoor activities."
-              delay={0.2}
-            />
-            <FeatureCard
-              icon={<Shield />}
-              title="Security System"
-              description="CCTV surveillance throughout campus, controlled access, trained security staff, and emergency protocols in place."
-              delay={0.3}
-            />
-            <FeatureCard
-              icon={<Music />}
-              title="Activity Rooms"
-              description="Dedicated spaces for art, music, dance, and creative activities supporting overall child development."
-              delay={0.4}
-            />
-            <FeatureCard
-              icon={<Utensils />}
-              title="Meal Services"
-              description="Nutritious, hygienic meals prepared by trained cooks. Special dietary needs accommodated upon request."
-              delay={0.5}
-            />
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Complete Facility Overview</h2>
+            <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-xl mx-auto">
+              Our campus is equipped with best-in-class infrastructure designed to foster a healthy, safe, and engaging environment.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+            {facilities.map((fac, idx) => (
+              <FeatureCard
+                key={idx}
+                icon={fac.icon}
+                title={fac.title}
+                description={fac.description}
+                delay={idx * 0.05}
+              />
+            ))}
           </div>
         </div>
       </AnimatedSection>

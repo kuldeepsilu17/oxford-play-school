@@ -19,15 +19,17 @@ export default function FeatureCard({
 }: FeatureCardProps) {
   return (
     <motion.div
-      className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition"
-      initial={{ opacity: 0, y: 40 }}
+      className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
+      transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
     >
-      <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-purple-600">{icon}</div>
-      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">{title}</h3>
-      <p className="text-sm sm:text-base text-gray-600">{description}</p>
+      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-50 text-purple-600 mb-5 flex-shrink-0">
+        {icon}
+      </div>
+      <h3 className="text-lg sm:text-xl font-bold mb-2.5 text-slate-800 leading-tight">{title}</h3>
+      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed flex-grow">{description}</p>
     </motion.div>
   );
 }

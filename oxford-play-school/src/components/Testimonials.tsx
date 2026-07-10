@@ -32,17 +32,17 @@ export default function Testimonials({ testimonials, title }: TestimonialsProps)
           <p className="text-sm sm:text-base md:text-lg text-gray-600">What parents say about Oxford Play School</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-lg p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition flex flex-col"
-              initial={{ opacity: 0, y: 40 }}
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition duration-300 flex flex-col h-full"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="flex mb-3 sm:mb-4">
+              <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
@@ -52,19 +52,19 @@ export default function Testimonials({ testimonials, title }: TestimonialsProps)
                 ))}
               </div>
 
-              <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-3 sm:mb-4 md:mb-6 italic flex-grow">&ldquo;{testimonial.text}&rdquo;</p>
+              <p className="text-sm sm:text-base text-gray-700 mb-6 italic leading-relaxed flex-grow">&ldquo;{testimonial.text}&rdquo;</p>
 
-              <div className="flex items-center gap-2 sm:gap-3 mt-auto">
+              <div className="flex items-center gap-3 mt-auto">
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-purple-100 flex-shrink-0"
                 />
                 <div className="min-w-0">
-                  <p className="font-bold text-gray-900 text-xs sm:text-sm md:text-base truncate">{testimonial.name}</p>
-                  <p className="text-xs text-gray-600">{testimonial.role}</p>
+                  <p className="font-bold text-gray-900 text-sm sm:text-base truncate">{testimonial.name}</p>
+                  <p className="text-xs text-gray-500">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

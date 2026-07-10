@@ -2,6 +2,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { School, Award, Users, Smile, BookOpen, Bus, Heart } from "lucide-react";
+import AnimatedCard from "@/components/AnimatedCard";
 import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 import FeatureCard from "@/components/FeatureCard";
@@ -9,7 +10,7 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import { generateMetadata as generateSeoMetadata } from "@/lib/seo-config";
-import { schoolSchema, organizationSchema, faqSchema } from "@/lib/schema";
+import { schoolSchema, organizationSchema, faqSchema, localBusinessSchema } from "@/lib/schema";
 import { faqs } from "@/lib/faq-data";
 import Script from "next/script";
 
@@ -63,6 +64,11 @@ export default function Home() {
         id="org-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <Script
+        id="local-business-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <Script
         id="faq-schema"
@@ -181,64 +187,77 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Student Care Section */}
-      <AnimatedSection className="py-8 sm:py-12 md:py-16 bg-white border-t border-slate-100">
+      <AnimatedSection className="py-16 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-slate-800">Caring Beyond Education</h2>
-            <p className="text-xs sm:text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-slate-800">Caring Beyond Education</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
               How our dedicated teachers support and guide children during lunch, play, and daily school activities.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
-            <div className="bg-gradient-to-b from-purple-50 to-white p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-purple-100/50 hover:-translate-y-1 transition duration-300">
-              <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">🍱</div>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-800">Healthy Eating Guidance</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                Teachers sit with students during lunch hours, guiding them on eating properly, table manners, and developing healthy eating habits.
-              </p>
-            </div>
-            <div className="bg-gradient-to-b from-blue-50 to-white p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-blue-100/50 hover:-translate-y-1 transition duration-300">
-              <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">🧼</div>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-800">Cleanliness & Hygiene</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                Students are actively taught personal hygiene, regular hand washing before and after meals, and self-discipline in keeping their campus clean.
-              </p>
-            </div>
-            <div className="bg-gradient-to-b from-green-50 to-white p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-green-100/50 hover:-translate-y-1 transition duration-300">
-              <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">🤝</div>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-800">Friendly Interactions</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                Educators build warm, supportive, and friendly relationships with kids, helping them feel secure, happy, and confident at school.
-              </p>
-            </div>
-            <div className="bg-gradient-to-b from-yellow-50 to-white p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-yellow-100/50 hover:-translate-y-1 transition duration-300">
-              <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">✨</div>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-800">Good Manners & Values</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                We focus on instilling moral values, politeness, sharing, cooperation, and positive behavioral manners in every child.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                emoji: "🍱",
+                title: "Healthy Eating Habits",
+                desc: "Teachers sit with students during lunch hours, guiding them on eating properly, table manners, and developing healthy eating habits.",
+                bg: "from-purple-50/60 to-purple-50/10 border-purple-100/50"
+              },
+              {
+                emoji: "🧼",
+                title: "Personal Hygiene",
+                desc: "Students are actively taught personal hygiene, regular hand washing before and after meals, and self-discipline in keeping their campus clean.",
+                bg: "from-blue-50/60 to-blue-50/10 border-blue-100/50"
+              },
+              {
+                emoji: "✨",
+                title: "Discipline & Values",
+                desc: "We focus on instilling moral values, politeness, sharing, cooperation, and positive behavioral manners in every child.",
+                bg: "from-amber-50/60 to-amber-50/10 border-amber-100/50"
+              },
+              {
+                emoji: "🤝",
+                title: "Friendly Learning Environment",
+                desc: "Educators build warm, supportive, and friendly relationships with kids, helping them feel secure, happy, and confident at school.",
+                bg: "from-green-50/60 to-green-50/10 border-green-100/50"
+              }
+            ].map((item, idx) => (
+              <AnimatedCard
+                key={item.title}
+                className={`bg-gradient-to-br ${item.bg} p-6 sm:p-8 rounded-2xl border shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 flex flex-col h-full`}
+                delay={idx * 0.1}
+              >
+                <div className="text-4xl mb-4">{item.emoji}</div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-slate-800">{item.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed flex-grow">{item.desc}</p>
+              </AnimatedCard>
+            ))}
           </div>
         </div>
       </AnimatedSection>
 
       {/* Statistics Section */}
-      <AnimatedSection className="py-8 sm:py-12 md:py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <AnimatedSection className="py-16 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white border-y border-slate-800">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {[
-              { value: 500, suffix: "+", label: "Happy Students" },
-              { value: 15, suffix: "+", label: "Years Experience" },
-              { value: 20, suffix: "", label: "B.Ed Teachers" },
-              { value: 100, suffix: "%", label: "Parent Satisfaction" }
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center justify-center">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2">
+              { value: 500, suffix: "+", label: "Happy Students", desc: "Enrolled & active learners" },
+              { value: 15, suffix: "+", label: "Years Experience", desc: "Of educational service" },
+              { value: 20, suffix: "+", label: "B.Ed Teachers", desc: "Qualified educators" },
+              { value: 100, suffix: "%", label: "Parent Satisfaction", desc: "Highly positive reviews" }
+            ].map((stat, idx) => (
+              <AnimatedCard
+                key={stat.label}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl flex flex-col justify-center items-center text-center shadow-lg hover:border-white/20 transition duration-300 h-full"
+                delay={idx * 0.1}
+              >
+                <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-xs sm:text-sm md:text-lg leading-tight">{stat.label}</p>
-              </div>
+                <h3 className="text-sm sm:text-base font-bold text-white mb-1">{stat.label}</h3>
+                <p className="text-[10px] sm:text-xs text-slate-400">{stat.desc}</p>
+              </AnimatedCard>
             ))}
           </div>
         </div>
