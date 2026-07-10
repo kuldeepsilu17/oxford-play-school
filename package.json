@@ -9,8 +9,5 @@
     "build": "npm run build --workspace=oxford-play-school",
     "start": "npm run start --workspace=oxford-play-school",
     "lint": "npm run lint --workspace=oxford-play-school"
-  },
-  "dependencies": {
-    "next": "^16.2.10"
   }
 }
